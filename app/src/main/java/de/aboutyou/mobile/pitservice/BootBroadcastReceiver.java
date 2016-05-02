@@ -8,13 +8,10 @@ public class BootBroadcastReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED))
-        {
-            if (!Helpers.isTracked(context)) {
-                Intent launchIntent = new Intent(context, MainActivity.class);
-                launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(launchIntent);
-            }
+        if (!Helpers.isTracked(context)) {
+            Intent launchIntent = new Intent(context, MainActivity.class);
+            launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(launchIntent);
         }
     }
 }
